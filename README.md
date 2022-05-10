@@ -1,6 +1,6 @@
 # 2nd_week_board
 
-## Stack
+## Backend Stack
 
 - Java 8 / jdk 1.8
 - springboot 2.4.0
