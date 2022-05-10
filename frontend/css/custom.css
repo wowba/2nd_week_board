@@ -1,0 +1,386 @@
+@charset "UTF-8";
+/* Your Custom CSS Goes here */
+
+.app-auth-container .logo a {
+    display: flex;
+    padding-left: 60px;
+    background: url(../images/biviz-symbol.png) no-repeat;
+    height: 50px;
+    background-size: 50px;
+    align-items: center;
+    text-decoration: none;
+    color: #40475c;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.app-auth-container .auth-description {
+    margin: 15px 0 30px 0;
+}
+
+.app-sidebar .logo {
+    padding: 40px 28px;
+}
+
+@media (max-width: 1199px) {
+    .app-sidebar .logo {
+        padding: 15px 28px;
+    }
+}
+
+.app-header .notifications-dropdown {
+    width: 200px;
+}
+
+.app-header .notifications-dropdown .notifications-dropdown-item-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.app-content {
+    margin-top: 90px;
+}
+
+@media (max-width: 576px) {
+    .app-content {
+        margin-top: 100px;
+    }
+}
+.app-content .page-description {
+    padding: 10px 20px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.app-content .page-description h2 {
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+@media (min-width: 1200px) {
+    .todo-container {
+        height: calc(100vh - 231px);
+        margin-bottom: 0!important;
+    }
+
+    .todo-container .row,
+    .todo-container .row > div {
+        height: 100%;
+    }
+
+    .todo-container .card {
+        height: 100%;
+    }
+}
+
+.todo-menu {
+    margin: 0;
+    padding: 25px;
+    height: 100%;
+    border-right: 0;
+}
+
+.todo-menu .todo-menu-title {
+    padding: 0 0 10px 0;
+    opacity: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.category-menu {
+    overflow-y: auto;
+}
+
+.category-menu .category-menu-title {
+    padding: 0 0 10px 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #40475c;
+    font-size: 12px;
+    font-family: 'NEXON Lv1 Gothic', sans-serif;
+}
+
+.category-menu .category-menu-list li {
+    color: #293442;
+    padding: 10px 20px;
+    display: block;
+    text-decoration: none;
+    background: #f4f7fa;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.category-menu .category-menu-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 100%;
+    position: relative;
+}
+
+.category-menu .category-menu-list li:hover {
+    background: #DFF0FE;
+    color: #2269F5;
+}
+
+.category-menu .category-menu-list li .category-title {
+    padding-left: 30px;
+}
+
+
+.category-menu .category-menu-list li .category-handle {
+    position: absolute;
+    left: 20px;
+    cursor: move;
+}
+
+.category-menu .category-menu-list li div i {
+    font-size: 18px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.todo-container .card .card-body {
+    overflow: auto;
+    position: relative;
+}
+
+.content-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-top-info {
+    margin-bottom: 6px;
+}
+
+.content-list .list-info {
+    margin-bottom: 0;
+}
+
+.content-list .list-left-content {
+    display: flex;
+    align-items: center;
+    max-width: calc(100% - 200px);
+}
+
+.content-list .list-checkbox {
+    margin-right: 10px;
+}
+
+.content-list .list-thumb {
+    width: 60px;
+    min-width: 60px;
+    height: 60px;
+    margin-right: 15px;
+}
+
+.content-list .list-text-wrap {
+    min-width: calc(100% - 200px);
+}
+
+.list-title {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.list-title a {
+    color: #4d546b;
+}
+
+.list-title a:hover {
+    text-decoration: underline;
+}
+
+.content-list .list-thumb img {
+    width: 100%;
+    height: 100%;
+}
+
+.content-list .list-right-content {
+    min-width: 100px;
+    max-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content-list .list-right-content select {
+    width: 80px;
+}
+
+.content-list.content-list-all .list-right-content {
+    min-width: auto;
+    max-width: unset;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.content-list.content-list-all .list-right-content select {
+    width: auto;
+    padding-right: 34px;
+}
+
+select option[value=""][disabled] {
+    display: none;
+}
+
+.blog-write-wrapper {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 120px;
+    bottom: 75px;
+    overflow: auto;
+}
+
+.selThumbLabel, .selHtmlLabel {
+    cursor: pointer;
+}
+
+.confirm-bar {
+    background-color: #fff;
+    z-index: 1099;
+    position: fixed;
+    height: 75px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-left: 280px;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+}
+
+.flatpickr-input {
+    padding: 6px 18px;
+    border-radius: 5px;
+}
+
+.confirm-bar .btn-wrap {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.btn-wrap .btn {
+    margin-right: 0.5rem;
+}
+
+.btn-sm, .btn-group-sm .btn {
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.form-control {
+    border-color: #ccc;
+}
+
+.form-control-sm {
+    padding: 4px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.table-custom tbody th {
+    background-color: #f8f8f8;
+    color: #333;
+    vertical-align: middle;
+}
+
+.thumb-info {
+    margin-bottom: 0;
+    margin-top: 6px;
+    color: #999;
+    font-size: 12px;
+    padding-left: 13px;
+}
+
+.widget-info .widget-info-container .widget-info-image {
+    height: 75px;
+    background-size: 100px !important;
+}
+
+.widget-action-list .widget-action-list-container .widget-action-list-item a {
+    padding: 23px 0;
+}
+
+.widget-list .widget-list-content .widget-list-item .widget-list-item-icon.widget-list-item-icon-large {
+    width: 70px;
+    height: 70px;
+}
+
+.widget-list .widget-list-content .widget-list-item .widget-list-item-icon.widget-list-item-icon-large img {
+    width: 100%;
+}
+
+.card .card-title .badge {
+    float: none;
+}
+
+.pace .pace-progress {
+    background: #2269f4;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    right: 100%;
+    width: 100%;
+    height: 2px;
+}
+
+/* Scrollbar Custom */
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+/* button */
+::-webkit-scrollbar-button {
+    background: #eee;
+    height: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 6px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #bbb;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #eee;
+}
+
+/* The track NOT covered by the handle. */
+::-webkit-scrollbar-track-piece {
+    background: #eee;
+}
+
+/* Corner */
+::-webkit-scrollbar-corner {
+    background: #ccc;
+}
+
+/* Resizer */
+/*::-webkit-resizer {
+    background: #ccc;
+}*/
