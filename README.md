@@ -8,3 +8,8 @@
 - PostgreSQL (dbeaver 22.0.4)
 - springdata jpa
 - Lombok
+
+## Frontend Stack
+
+- Node.js 16.15.0
+- npm 8.5.5
