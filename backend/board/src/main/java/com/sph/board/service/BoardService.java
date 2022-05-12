@@ -29,6 +29,7 @@ public class BoardService {
 		List<BoardResponseDto> boardResponseDtoList = new ArrayList<>();
 		for(Board board : boards) {
 			BoardResponseDto boardResponseDto = BoardResponseDto.builder()
+				.boardId(board.getId())
 				.title(board.getTitle())
 				.content(board.getContent())
 				.writer(board.getWriter())
@@ -69,12 +70,22 @@ public class BoardService {
 	}
 
 	public void deleteBoard(Map<String, String> param) {
-
 		String boardId = param.get("boardIdList");
 		String[] boardIdList = boardId.split(",");
 
 		for (String id : boardIdList) {
 			boardRepository.deleteById(Long.parseLong(id));
+		}
+	}
+
+	public void createDummy() {
+		for(int i = 0; i < 100; i++) {
+			Board board = Board.builder()
+				.title("게시글 " + i)
+				.content("게시글 " + i + " 의 내용")
+				.writer("익명 " + i)
+				.build();
+			boardRepository.save(board);
 		}
 	}
 }

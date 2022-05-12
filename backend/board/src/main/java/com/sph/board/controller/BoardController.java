@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,7 +40,7 @@ public class BoardController {
 
 	@GetMapping("/api/board")
 	public ResponseEntity<RestResponseMessage> getAllBoard(@RequestParam int page) {
-		PageRequest pageRequest = PageRequest.of(page - 1, 15, Sort.by(Sort.Direction.DESC));
+		PageRequest pageRequest = PageRequest.of(page - 1, 15, Sort.by(Sort.Direction.DESC, "createdAt"));
 		List<BoardResponseDto> boardResponseDtoList = boardService.getAllBoard(pageRequest);
 		return new ResponseEntity<>(new RestResponseMessage<>(true, "게시판 리스트 가져오기",boardResponseDtoList), HttpStatus.OK);
 	}
@@ -61,5 +62,11 @@ public class BoardController {
 	public ResponseEntity<RestResponseMessage> deleteBoard(@RequestBody Map<String, String> param) {
 		boardService.deleteBoard(param);
 		return new ResponseEntity<>(new RestResponseMessage(true, "게시판 삭제하기", null), HttpStatus.OK);
+	}
+
+	@PostMapping("/api/dummy")
+	public ResponseEntity<RestResponseMessage> createDummy() {
+		boardService.createDummy();
+		return new ResponseEntity<>(new RestResponseMessage(true, "더미데이터 생성", null), HttpStatus.OK);
 	}
 }
