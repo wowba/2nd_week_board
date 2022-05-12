@@ -5,11 +5,15 @@ const app = express();
 
 const PORT = 3000;
 
-// app.get('/', (req, res) => {
-//     res.sendFile("C:/Users/user/Desktop/2nd_week_board/frontend/public/blog-list.html")
-// });
-
 app.get('/', (req, res) => {
+    res.sendFile("C:/Users/user/Desktop/2nd_week_board/frontend/public/blog-list.html")
+});
+
+app.get('/create', (req, res) => {
+    res.sendFile("C:/Users/user/Desktop/2nd_week_board/frontend/public/blog-write.html")
+});
+
+app.get('/test', (req, res) => {
     res.sendFile("C:/Users/user/Desktop/2nd_week_board/frontend/public/test.html")
 })
 

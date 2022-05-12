@@ -46,7 +46,7 @@
     <div class="app align-content-stretch d-flex flex-wrap">
         <div class="app-sidebar">
             <div class="logo">
-                <a href="index.html" class="logo-icon"></a>
+                <a href="blog-list.html" class="logo-icon"></a>
             </div>
             <div class="app-menu">
                 <ul class="accordion-menu">
@@ -123,8 +123,8 @@
                             <div class="col">
                                 <div class="page-description">
                                     <h2>블로그 관리</h2>
-                                    <button class="btn btn-primary"><i
-                                            class="material-icons-outlined">edit</i>글쓰기</button>
+                                    <button class="btn btn-primary" onclick="return moveToWrite()"><i
+                                            class="material-icons-outlined" >edit</i>글쓰기</button>
                                 </div>
                             </div>
                         </div>
@@ -195,9 +195,8 @@
                                                                     <img src="images/sample.png" alt="">
                                                                 </div>
                                                                 <div class="list-text-wrap">
-                                                                    <h5 class="list-title mb-1"><a data-bs-toggle="modal" data-bs-target="#myModal" href="#myModal">블로그 포스트
-                                                                            제목입니다. 블로그 포스트 제목입니다. 블로그 포스트 제목입니다. 블로그 포스트
-                                                                            제목입니다.</a></h5>
+                                                                    <h5 class="list-title mb-1"><a data-bs-toggle="modal" data-bs-target="#myModal" href="#myModal">
+                                                                        블로그 포스트 제목입니다.</a></h5>
                                                                     <p class="list-info">
                                                                         <span class="content-author">홍길동 </span>·
                                                                         <span class="content-date">2021-12-31
@@ -273,7 +272,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -324,6 +322,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 
     <script src="js/main.js"></script>
+    <script src="js/blog-list.js"></script>
 
 </body>
 
