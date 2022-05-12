@@ -5,9 +5,13 @@ const app = express();
 
 const PORT = 3000;
 
+// app.get('/', (req, res) => {
+//     res.sendFile("C:/Users/user/Desktop/2nd_week_board/frontend/public/blog-list.html")
+// });
+
 app.get('/', (req, res) => {
-    res.sendFile("C:/Users/user/Desktop/2nd_week_board/frontend/public/blog-list.html")
-});
+    res.sendFile("C:/Users/user/Desktop/2nd_week_board/frontend/public/test.html")
+})
 
 // express는 절대경로를 사용하기에 상대경로를 사용하는 파일들은 static folder를 사용해 넣어준다.
 app.use(express.static('public'));
