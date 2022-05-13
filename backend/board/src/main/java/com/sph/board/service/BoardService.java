@@ -28,13 +28,7 @@ public class BoardService {
 		Page<Board> boards = boardRepository.findAll(pageable);
 		List<BoardResponseDto> boardResponseDtoList = new ArrayList<>();
 		for(Board board : boards) {
-			BoardResponseDto boardResponseDto = BoardResponseDto.builder()
-				.boardId(board.getId())
-				.title(board.getTitle())
-				.content(board.getContent())
-				.writer(board.getWriter())
-				.createdAt(board.getCreatedAt())
-				.build();
+			BoardResponseDto boardResponseDto = board.createBoardResponseDto();
 			boardResponseDtoList.add(boardResponseDto);
 		}
 		return  boardResponseDtoList;

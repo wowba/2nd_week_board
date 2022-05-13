@@ -10,6 +10,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicUpdate;
 
 import com.sph.board.dto.BoardRequestDto;
+import com.sph.board.dto.BoardResponseDto;
 import com.sph.board.utils.TimeStamp;
 
 import lombok.AccessLevel;
@@ -49,5 +50,15 @@ public class Board extends TimeStamp {
 		this.title = boardRequestDto.getTitle();
 		this.content = boardRequestDto.getContent();
 		this.writer = boardRequestDto.getWriter();
+	}
+
+	public BoardResponseDto createBoardResponseDto() {
+		return BoardResponseDto.builder()
+			.boardId(this.getId())
+			.title(this.getTitle())
+			.content(this.getContent())
+			.writer(this.getWriter())
+			.createdAt(this.getCreatedAt())
+			.build();
 	}
 }
