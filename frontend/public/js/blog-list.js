@@ -5,7 +5,8 @@ function moveToWrite() {
 }
 
 function getBoardList() {
-    const currentPage = document.getElementById("currentPage").text;
+    const searchParam = new URLSearchParams(location.search);
+    const currentPage = searchParam.get("page")
     var requestOptions = {
         method: 'GET',
         redirect: 'follow'
@@ -57,6 +58,7 @@ function getBoardList() {
                 newBoard.innerHTML = temp_html;
                 document.querySelector(`#boardList`).appendChild(newBoard);
             }
+            createFooter(currentPage, lastPage);
             console.log(result)
         })
         .catch(error => console.log('error', error));
@@ -83,8 +85,71 @@ function getBoardData(boardId) {
         .catch(error => console.log('error', error));
 }
 
-var myModalEl = document.getElementById('myModal')
-myModalEl.addEventListener('hidden.bs.modal', function (event) {
+var Modal = document.getElementById('myModal')
+Modal.addEventListener('hidden.bs.modal', function (event) {
   const content = document.querySelector("#modalContent")
   content.innerText = ""
 })
+
+function createFooter(currentPage, lastPage) {
+    const numberSize = parseInt((currentPage - 1) / 5)
+    console.log(numberSize)
+    console.log(lastPage)
+
+    if(numberSize != 0) {
+        const left = document.createElement("li");
+        left.classList.add("page-item");
+        left.innerHTML = `
+            <a class="page-link" href="/?page=${numberSize * 5}" aria-label="Previous">
+                <span aria-hidden="true">«</span>
+            </a>
+        `
+        document.querySelector(`.pagination`).appendChild(left);
+    } else {
+        const left = document.createElement("li");
+        left.classList.add("page-item");
+        left.classList.add("disabled");
+        left.innerHTML = `
+            <a class="page-link" href="/?page=${numberSize * 5}" aria-label="Previous">
+                <span aria-hidden="true">«</span>
+            </a>
+        `
+        document.querySelector(`.pagination`).appendChild(left);
+    }
+
+    for(let i = 1; i < 6; i++) {
+        if(numberSize * 5 + i > lastPage) {
+            break;
+        }
+        const pageBlock = document.createElement("li");
+        pageBlock.classList.add("page-item");
+        if(numberSize * 5 + i == currentPage) {
+            pageBlock.classList.add("active")
+        }
+        pageBlock.innerHTML = `
+            <a class="page-link" href="/?page=${numberSize * 5 + i}">${numberSize * 5 + i}</a>
+        `
+        document.querySelector(`.pagination`).appendChild(pageBlock);
+    }
+
+    if(lastPage < numberSize * 5 + 6) {
+        const right = document.createElement("li");
+        right.classList.add("page-item");
+        right.classList.add("disabled");
+        right.innerHTML = `
+            <a class="page-link" href="/?page=${numberSize * 5 + 6}" aria-label="Previous">
+                <span aria-hidden="true">»</span>
+            </a>
+        `
+        document.querySelector(`.pagination`).appendChild(right);
+    } else {
+        const right = document.createElement("li");
+        right.classList.add("page-item");
+        right.innerHTML = `
+            <a class="page-link" href="/?page=${numberSize * 5 + 6}" aria-label="Previous">
+                <span aria-hidden="true">»</span>
+            </a>
+        `
+        document.querySelector(`.pagination`).appendChild(right);
+    }
+}
