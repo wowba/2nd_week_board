@@ -40,8 +40,8 @@ public class BoardController {
 	@GetMapping("/api/board")
 	public ResponseEntity<RestResponseMessage> getAllBoard(@RequestParam int page) {
 		PageRequest pageRequest = PageRequest.of(page - 1, 15, Sort.by(Sort.Direction.DESC, "createdAt"));
-		List<BoardResponseDto> boardResponseDtoList = boardService.getAllBoard(pageRequest);
-		return new ResponseEntity<>(new RestResponseMessage<>(true, "게시판 리스트 가져오기",boardResponseDtoList), HttpStatus.OK);
+		Map<String, Object> data = boardService.getAllBoard(pageRequest);
+		return new ResponseEntity<>(new RestResponseMessage<>(true, "게시판 리스트 가져오기", data), HttpStatus.OK);
 	}
 
 	@GetMapping("/api/board/{id}")

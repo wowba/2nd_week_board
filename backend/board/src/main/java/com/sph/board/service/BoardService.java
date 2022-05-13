@@ -1,6 +1,7 @@
 package com.sph.board.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,14 +25,19 @@ public class BoardService {
 
 	private final BoardRepository boardRepository;
 
-	public List<BoardResponseDto> getAllBoard(Pageable pageable) {
+	public Map<String, Object> getAllBoard(Pageable pageable) {
+		Map<String, Object> map = new HashMap<>();
+
 		Page<Board> boards = boardRepository.findAll(pageable);
 		List<BoardResponseDto> boardResponseDtoList = new ArrayList<>();
 		for(Board board : boards) {
 			BoardResponseDto boardResponseDto = board.createBoardResponseDto();
 			boardResponseDtoList.add(boardResponseDto);
 		}
-		return  boardResponseDtoList;
+
+		map.put("boardResponseDtoList", boardResponseDtoList);
+		map.put("allPage", boards.getTotalPages());
+		return map;
 	}
 
 	public BoardResponseDto getBoard(long id) {

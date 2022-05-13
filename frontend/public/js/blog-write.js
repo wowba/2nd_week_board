@@ -24,7 +24,7 @@ function createBoard() {
     };
 
     fetch("http://localhost:8080/api/board", requestOptions)
-    .then(response => response.text())
+    .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
 
