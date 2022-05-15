@@ -54,7 +54,7 @@ function getBoardList() {
                             class="btn btn-sm btn-outline-warning" onclick="return moveToEdit(${boardId})">수정</button>
                         <button
                             class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">삭제</button>
+                            data-bs-target="#exampleModal" onclick="return createDeleteFunction(${boardId})">삭제</button>
                     </div>
                 `
                 const newBoard = document.createElement('li');
@@ -159,4 +159,31 @@ function createFooter(currentPage, lastPage) {
         `
         document.querySelector(`.pagination`).appendChild(right);
     }
+}
+
+function createDeleteFunction(boardId) {
+    document.getElementById("deleteButton").setAttribute("onclick", `deleteBoard(${boardId})`)
+}
+
+function deleteBoard(boardId) {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+    "boardIdList": `${boardId}`
+    });
+
+    var requestOptions = {
+    method: 'DELETE',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+    };
+
+    fetch("http://localhost:8080/api/board", requestOptions)
+    .then(response => response.json())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+
+    location.replace("/")
 }
