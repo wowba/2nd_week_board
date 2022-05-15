@@ -78,8 +78,9 @@ public class BoardService {
 		}
 	}
 
-	public void createDummy() {
-		for(int i = 0; i < 100; i++) {
+	public void createDummy() throws InterruptedException {
+		for(int i = 1; i < 101; i++) {
+			Thread.sleep(100);
 			Board board = Board.builder()
 				.title("게시글 " + i)
 				.content("게시글 " + i + " 의 내용")

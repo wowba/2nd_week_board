@@ -1,5 +1,5 @@
 function moveToList() {
-    location.replace("/blog-list.html")
+    location.replace("/")
 }
 
 function createBoard() {
@@ -28,5 +28,5 @@ function createBoard() {
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
 
-    location.replace("/blog-list.html")
+    location.replace("/")
 }

@@ -1,12 +1,19 @@
 getBoardList();
 
 function moveToWrite() {
-    location.replace("/blog-write.html")
+    location.replace("/create");
+}
+
+function moveToEdit(boardId) {
+    location.replace(`/edit?boardId=${boardId}`);
 }
 
 function getBoardList() {
     const searchParam = new URLSearchParams(location.search);
-    const currentPage = searchParam.get("page")
+    let currentPage = searchParam.get("page");
+    if (currentPage == null) {
+        currentPage = 1;
+    }
     var requestOptions = {
         method: 'GET',
         redirect: 'follow'
@@ -17,7 +24,7 @@ function getBoardList() {
         .then(result => {
             const lastPage = result.data.allPage
             const boardList = result.data.boardResponseDtoList
-
+            
             for(let i = 0; i < boardList.length; i++) {
                 const boardId = boardList[i].boardId;
                 const writer = boardList[i].writer;
@@ -44,7 +51,7 @@ function getBoardList() {
                     </div>
                     <div class="list-right-content">
                         <button
-                            class="btn btn-sm btn-outline-warning">수정</button>
+                            class="btn btn-sm btn-outline-warning" onclick="return moveToEdit(${boardId})">수정</button>
                         <button
                             class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">삭제</button>

@@ -64,7 +64,7 @@ public class BoardController {
 	}
 
 	@PostMapping("/api/dummy")
-	public ResponseEntity<RestResponseMessage> createDummy() {
+	public ResponseEntity<RestResponseMessage> createDummy() throws InterruptedException {
 		boardService.createDummy();
 		return new ResponseEntity<>(new RestResponseMessage(true, "더미데이터 생성", null), HttpStatus.OK);
 	}
