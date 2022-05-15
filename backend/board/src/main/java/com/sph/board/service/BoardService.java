@@ -5,11 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.transaction.Transactional;
+
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sph.board.dto.BoardRequestDto;
 import com.sph.board.dto.BoardResponseDto;
@@ -25,6 +26,7 @@ public class BoardService {
 
 	private final BoardRepository boardRepository;
 
+	@Transactional(readOnly = true)
 	public Map<String, Object> getAllBoard(Pageable pageable) {
 		Map<String, Object> map = new HashMap<>();
 
@@ -40,6 +42,7 @@ public class BoardService {
 		return map;
 	}
 
+	@Transactional(readOnly = true)
 	public BoardResponseDto getBoard(long id) {
 		Board board = boardRepository.findById(id)
 			.orElseThrow(IllegalArgumentException::new);

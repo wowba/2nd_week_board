@@ -29,13 +29,21 @@ function editBoard() {
     const searchParam = new URLSearchParams(location.search);
     const boardId = searchParam.get("boardId");
 
+    const title = document.getElementById("title").value;
+    const writer = document.getElementById("writer").value;
+    const content = document.getElementById("content").value;
+
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
+    if (title == "" || writer == "" || content == "") {
+        return alert("제목, 내용 및 작성자는 반드시 작성하셔야 합니다.")
+    }
+
     var raw = JSON.stringify({
-    "title": document.getElementById("title").value,
-    "writer": document.getElementById("writer").value,
-    "content": document.getElementById("content").value
+    "title": title,
+    "writer": writer,
+    "content": content
     });
 
     var requestOptions = {
