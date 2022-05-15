@@ -8,6 +8,24 @@ function moveToEdit(boardId) {
     location.replace(`/edit?boardId=${boardId}`);
 }
 
+function checkAllButton() {
+    const checkBoxes = document.getElementsByClassName("form-check-input me-1")
+    const allButton = document.getElementById("allButton")
+
+    if (allButton.checked == false) {
+        for(let i=0; i<checkBoxes.length; i++){
+                checkBoxes[i].checked = false
+        }
+    } else {
+        for(let i=0; i<checkBoxes.length; i++){
+            checkBoxes[i].checked = true
+    }
+    }
+
+
+    
+}
+
 function getBoardList() {
     const searchParam = new URLSearchParams(location.search);
     let currentPage = searchParam.get("page");
@@ -35,7 +53,7 @@ function getBoardList() {
                 `
                     <div class="list-left-content">
                         <div class="list-checkbox">
-                            <input class="form-check-input me-1" type="checkbox"
+                            <input class="form-check-input me-1" type="checkbox" id=${boardId}
                                 value="" aria-label="...">
                         </div>
                         <div class="list-thumb">
@@ -54,7 +72,7 @@ function getBoardList() {
                             class="btn btn-sm btn-outline-warning" onclick="return moveToEdit(${boardId})">수정</button>
                         <button
                             class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal" onclick="return createDeleteFunction(${boardId})">삭제</button>
+                            data-bs-target="#exampleModal" onclick="return createBoardDeleteFunction(${boardId})">삭제</button>
                     </div>
                 `
                 const newBoard = document.createElement('li');
@@ -161,7 +179,7 @@ function createFooter(currentPage, lastPage) {
     }
 }
 
-function createDeleteFunction(boardId) {
+function createBoardDeleteFunction(boardId) {
     document.getElementById("deleteButton").setAttribute("onclick", `deleteBoard(${boardId})`)
 }
 
@@ -184,6 +202,18 @@ function deleteBoard(boardId) {
     .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
-
     location.replace("/")
+}
+
+function createCheckBoardDeleteFunction() {
+    let boardIdList = "";
+    const checkBoxes = document.getElementsByClassName("form-check-input me-1")
+    for(let i=0; i<checkBoxes.length; i++){
+        if(checkBoxes[i].checked == true) {
+            console.log(i)
+            boardIdList += `${checkBoxes[i].id},`
+        }
+    }
+    boardIdList = boardIdList.substring(0, boardIdList.length - 1)
+    document.getElementById("deleteButton").setAttribute("onclick", `deleteBoard([${boardIdList}])`)
 }

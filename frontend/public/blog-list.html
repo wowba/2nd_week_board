@@ -140,7 +140,7 @@
                                                         <div class="list-group-item content-list content-list-all">
                                                             <div class="list-left-content">
                                                                 <div class="list-checkbox">
-                                                                    <input class="form-check-input" type="checkbox"
+                                                                    <input id="allButton" class="form-check-input" type="checkbox" onclick="return checkAllButton()"
                                                                         value="" aria-label="checkbox">
                                                                 </div>
                                                                 <div class="list-all-info">
@@ -150,7 +150,8 @@
                                                             <div class="list-right-content">
                                                                 <button class="btn btn-sm btn-outline-danger"
                                                                     data-bs-toggle="modal"
-                                                                    data-bs-target="#exampleModal">삭제</button>
+                                                                    data-bs-target="#exampleModal"
+                                                                    onclick="return createCheckBoardDeleteFunction()">삭제</button>
                                                             </div>
                                                         </div>
                                                     </div>
