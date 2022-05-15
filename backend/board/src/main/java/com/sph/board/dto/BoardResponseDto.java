@@ -12,5 +12,5 @@ public class BoardResponseDto {
 	private String title;
 	private String content;
 	private String writer;
-	private LocalDateTime createdAt;
+	private String createdAt;
 }

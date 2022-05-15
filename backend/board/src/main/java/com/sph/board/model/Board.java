@@ -1,5 +1,7 @@
 package com.sph.board.model;
 
+import java.time.format.DateTimeFormatter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -58,7 +60,7 @@ public class Board extends TimeStamp {
 			.title(this.getTitle())
 			.content(this.getContent())
 			.writer(this.getWriter())
-			.createdAt(this.getCreatedAt())
+			.createdAt(this.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
 			.build();
 	}
 }
