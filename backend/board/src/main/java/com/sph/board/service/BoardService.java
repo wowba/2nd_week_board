@@ -47,22 +47,11 @@ public class BoardService {
 		Board board = boardRepository.findById(id)
 			.orElseThrow(IllegalArgumentException::new);
 
-		return BoardResponseDto.builder()
-			.boardId(board.getId())
-			.createdAt(board.getCreatedAt())
-			.content(board.getContent())
-			.title(board.getTitle())
-			.writer(board.getWriter())
-			.build();
+		return board.createBoardResponseDto();
 	}
 
 	public void createBoard(BoardRequestDto boardRequestDto) {
-		Board board = Board.builder()
-			.content(boardRequestDto.getContent())
-			.writer(boardRequestDto.getWriter())
-			.title(boardRequestDto.getTitle())
-			.build();
-
+		Board board = boardRequestDto.createBoard();
 		boardRepository.save(board);
 	}
 
