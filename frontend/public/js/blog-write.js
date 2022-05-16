@@ -9,6 +9,9 @@ function encodeImageFileAsURL(element) {
     reader.onloadend = function() {
         console.log(reader.result)
         encodedBase64 = reader.result
+        const thumb = document.getElementById("thumb")
+        thumb.src = reader.result
+        thumb.style = "width:400px; height:400px;"
     }
     reader.readAsDataURL(file);
 }

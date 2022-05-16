@@ -1,5 +1,18 @@
 getEditBoardData();
 
+let encodedBase64;
+function encodeImageFileAsURL(element) {
+    var file = element.files[0];
+    var reader = new FileReader();
+    reader.onloadend = function() {
+        console.log(reader.result)
+        encodedBase64 = reader.result
+        const thumb = document.getElementById("thumb")
+        thumb.src = reader.result
+    }
+    reader.readAsDataURL(file);
+}
+
 function getEditBoardData() {
     const searchParam = new URLSearchParams(location.search);
     const boardId = searchParam.get("boardId");
@@ -15,10 +28,12 @@ function getEditBoardData() {
             const title = result.data.title;
             const content = result.data.content;
             const writer = result.data.writer;
+            encodedBase64 = result.data.image;
 
             document.getElementById("title").value = `${title}`
             document.getElementById("content").value = `${content}`
             document.getElementById("writer").value = `${writer}`
+            document.getElementById("thumb").src = encodedBase64;
 
             console.log(result)
         })
@@ -43,7 +58,8 @@ function editBoard() {
     var raw = JSON.stringify({
     "title": title,
     "writer": writer,
-    "content": content
+    "content": content,
+    "image" : encodedBase64
     });
 
     var requestOptions = {
@@ -54,7 +70,7 @@ function editBoard() {
     };
 
     fetch(`http://localhost:8080/api/board/${boardId}`, requestOptions)
-    .then(response => response.text())
+    .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
 

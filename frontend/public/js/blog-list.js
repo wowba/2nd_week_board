@@ -48,6 +48,7 @@ function getBoardList() {
                 const writer = boardList[i].writer;
                 const title = boardList[i].title;
                 const createdAt = boardList[i].createdAt;
+                const image = boardList[i].image;
 
                 const temp_html = 
                 `
@@ -57,7 +58,7 @@ function getBoardList() {
                                 value="" aria-label="...">
                         </div>
                         <div class="list-thumb">
-                            <img src="images/sample.png" alt="">
+                            <img src="${image}" alt="">
                         </div>
                         <div class="list-text-wrap">
                             <h5 class="list-title mb-1"><a data-bs-toggle="modal" data-bs-target="#myModal" href="#myModal" onclick="return getBoardData(${boardId})")>${title}</a></h5>

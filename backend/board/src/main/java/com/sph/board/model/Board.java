@@ -41,7 +41,7 @@ public class Board extends TimeStamp {
 	@Column(name = "writer")
 	private String writer;
 
-	@Column(name = "image", length = 10000)
+	@Column(name = "image", length = 10000000)
 	private String image;
 
 	@Builder
@@ -56,6 +56,7 @@ public class Board extends TimeStamp {
 		this.title = boardRequestDto.getTitle();
 		this.content = boardRequestDto.getContent();
 		this.writer = boardRequestDto.getWriter();
+		this.image = boardRequestDto.getImage();
 	}
 
 	public BoardResponseDto createBoardResponseDto() {
@@ -65,6 +66,7 @@ public class Board extends TimeStamp {
 			.content(this.getContent())
 			.writer(this.getWriter())
 			.createdAt(this.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+			.image(this.image)
 			.build();
 	}
 }
