@@ -41,11 +41,15 @@ public class Board extends TimeStamp {
 	@Column(name = "writer")
 	private String writer;
 
+	@Column(name = "image", length = 10000)
+	private String image;
+
 	@Builder
-	public Board (String title, String content, String writer) {
+	public Board (String title, String content, String writer, String image) {
 		this.title = title;
 		this.content = content;
 		this.writer = writer;
+		this.image = image;
 	}
 
 	public void editBoard(BoardRequestDto boardRequestDto) {

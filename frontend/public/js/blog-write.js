@@ -2,10 +2,35 @@ function moveToList() {
     location.replace("/")
 }
 
+let encodedBase64;
+function encodeImageFileAsURL(element) {
+    var file = element.files[0];
+    var reader = new FileReader();
+    reader.onloadend = function() {
+        console.log(reader.result)
+        encodedBase64 = reader.result
+    }
+    reader.readAsDataURL(file);
+}
+
 function createBoard() {
     const title = document.getElementById("title").value;
     const writer = document.getElementById("writer").value;
     const content = document.getElementById("content").value;
+
+// ------------------------------------------- canvas ??
+
+    // const canvas = document.createElement("canvas");
+    // const ctx = canvas.getContext("2d");
+
+    // canvas.width = imageFile.width;
+    // canvas.height = imageFile.height;
+
+    // ctx.drawImage(imageFile, 0, 0);
+    // var base64 = canvas.toDataURL("image/*");
+    // const strImage = base64.replace(/^data:image\/[a-z]+;base64,/, "")
+    // console.log(strImage)
+// ------------------------------------------- 
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -17,7 +42,8 @@ function createBoard() {
     var raw = JSON.stringify({
     "writer": writer,
     "content": content,
-    "title": title
+    "title": title,
+    "image": encodedBase64
     });
 
     var requestOptions = {

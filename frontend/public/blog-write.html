@@ -149,7 +149,8 @@
                                                     <tr>
                                                         <th>대표이미지</th>
                                                         <td colspan="3">
-                                                            <input type="file" name="selThumb" id="selThumb" class="d-none"/>
+                                                            <input type="file" name="selThumb" id="selThumb" class="d-none" accept="image/*"
+                                                            onchange="return encodeImageFileAsURL(this)"/>
                                                             <label for="selThumb" class="form-control selThumbLabel">대표이미지 선택</label>
                                                             <p class="thumb-info">최소 가로사이즈 400px 이상으로 업로드 해주세요.</p>
                                                         </td>

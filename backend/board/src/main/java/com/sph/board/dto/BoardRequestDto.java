@@ -20,11 +20,14 @@ public class BoardRequestDto {
 	@NotNull(message = "게시글의 작성자가 있어야 합니다.")
 	private String writer;
 
+	private String image;
+
 	public Board createBoard() {
 		return Board.builder()
 			.title(this.title)
 			.writer(this.writer)
 			.content(this.content)
+			.image(this.image)
 			.build();
 	}
 }
