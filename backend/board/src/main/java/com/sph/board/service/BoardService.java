@@ -19,6 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sph.board.dto.BoardRequestDto;
 import com.sph.board.dto.BoardResponseDto;
+import com.sph.board.exception.ErrorCode;
+import com.sph.board.exception.ErrorCodeException;
 import com.sph.board.model.Board;
 import com.sph.board.repository.BoardRepository;
 
@@ -50,7 +52,7 @@ public class BoardService {
 	@Transactional(readOnly = true)
 	public BoardResponseDto getBoard(long id) {
 		Board board = boardRepository.findById(id)
-			.orElseThrow(IllegalArgumentException::new);
+			.orElseThrow(() -> new ErrorCodeException(ErrorCode.BOARD_NOT_FOUND));
 
 		return board.createBoardResponseDto();
 	}
@@ -62,7 +64,7 @@ public class BoardService {
 
 	public void editBoard(BoardRequestDto boardRequestDto, long id) {
 		Board board = boardRepository.findById(id)
-			.orElseThrow(IllegalArgumentException::new);
+			.orElseThrow(() -> new ErrorCodeException(ErrorCode.BOARD_NOT_FOUND));
 		board.editBoard(boardRequestDto);
 	}
 
