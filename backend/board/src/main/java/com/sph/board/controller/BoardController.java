@@ -52,7 +52,7 @@ public class BoardController {
 	}
 
 	@ApiOperation(value = "게시판 상세내용 가져오기")
-	@ApiImplicitParam(name = "id", value = "게시판 id", required = true, dataType = "int")
+	@ApiImplicitParam(name = "id", value = "게시판 id", required = true, dataType = "long")
 	@GetMapping("/api/board/{id}")
 	public ResponseEntity<RestResponseMessage> getBoard(@PathVariable long id) {
 		BoardResponseDto boardResponseDto = boardService.getBoard(id);
@@ -60,7 +60,7 @@ public class BoardController {
 	}
 
 	@ApiOperation(value = "게시판 수정하기")
-	@ApiImplicitParam(name = "id", value = "게시판 id", required = true, dataType = "int")
+	@ApiImplicitParam(name = "id", value = "게시판 id", required = true, dataType = "long")
 	@PatchMapping("/api/board/{id}")
 	public ResponseEntity<RestResponseMessage> editBoard(@PathVariable long id,
 		@Valid @RequestBody BoardRequestDto boardRequestDto) {
