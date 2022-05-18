@@ -12,7 +12,7 @@ function checkAllButton() {
     const checkBoxes = document.getElementsByClassName("form-check-input me-1")
     const allButton = document.getElementById("allButton")
 
-    if (allButton.checked == false) {
+    if (allButton.checked === false) {
         for(let i=0; i<checkBoxes.length; i++){
                 checkBoxes[i].checked = false
         }
@@ -21,9 +21,6 @@ function checkAllButton() {
             checkBoxes[i].checked = true
     }
     }
-
-
-    
 }
 
 function getBoardList() {
