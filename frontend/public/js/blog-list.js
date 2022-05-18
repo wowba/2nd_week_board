@@ -116,28 +116,17 @@ Modal.addEventListener('hidden.bs.modal', function (event) {
 
 function createFooter(currentPage, lastPage) {
     const numberSize = parseInt((currentPage - 1) / 5)
-    console.log(numberSize)
-    console.log(lastPage)
+    const left = document.createElement("li");
+    left.classList.add("page-item");
+    left.innerHTML = `
+        <a class="page-link" href="/?page=${numberSize * 5}" aria-label="Previous">
+            <span aria-hidden="true">«</span>
+        </a>
+        `
+    document.querySelector(`.pagination`).appendChild(left);
 
-    if(numberSize != 0) {
-        const left = document.createElement("li");
-        left.classList.add("page-item");
-        left.innerHTML = `
-            <a class="page-link" href="/?page=${numberSize * 5}" aria-label="Previous">
-                <span aria-hidden="true">«</span>
-            </a>
-        `
-        document.querySelector(`.pagination`).appendChild(left);
-    } else {
-        const left = document.createElement("li");
-        left.classList.add("page-item");
+    if(numberSize == 0) {
         left.classList.add("disabled");
-        left.innerHTML = `
-            <a class="page-link" href="/?page=${numberSize * 5}" aria-label="Previous">
-                <span aria-hidden="true">«</span>
-            </a>
-        `
-        document.querySelector(`.pagination`).appendChild(left);
     }
 
     for(let i = 1; i < 6; i++) {
@@ -155,25 +144,17 @@ function createFooter(currentPage, lastPage) {
         document.querySelector(`.pagination`).appendChild(pageBlock);
     }
 
+    const right = document.createElement("li");
+    right.classList.add("page-item");
+    right.innerHTML = `
+        <a class="page-link" href="/?page=${numberSize * 5 + 6}" aria-label="Previous">
+            <span aria-hidden="true">»</span>
+        </a>
+        `
+    document.querySelector(`.pagination`).appendChild(right);
+
     if(lastPage < numberSize * 5 + 6) {
-        const right = document.createElement("li");
-        right.classList.add("page-item");
         right.classList.add("disabled");
-        right.innerHTML = `
-            <a class="page-link" href="/?page=${numberSize * 5 + 6}" aria-label="Previous">
-                <span aria-hidden="true">»</span>
-            </a>
-        `
-        document.querySelector(`.pagination`).appendChild(right);
-    } else {
-        const right = document.createElement("li");
-        right.classList.add("page-item");
-        right.innerHTML = `
-            <a class="page-link" href="/?page=${numberSize * 5 + 6}" aria-label="Previous">
-                <span aria-hidden="true">»</span>
-            </a>
-        `
-        document.querySelector(`.pagination`).appendChild(right);
     }
 }
 
